@@ -4,6 +4,7 @@ import Home from '../components/Home'
 import Login from '../components/Login'
 import Nav from '../components/Nav'
 import Signup from '../components/Signup'
+import UserProfile from '../components/UserProfile'
 const Index = () => {
   return (
     <BrowserRouter>
@@ -12,6 +13,7 @@ const Index = () => {
             <Route path='/' element = {<Home/>}/>
             <Route path='/login' element = {<Login/>}/>
             <Route path='/signup' element = {<Signup/>}/>
+            <Route path='/profile' element = {<UserProfile/>}/>
         </Routes>
     </BrowserRouter>
   )
