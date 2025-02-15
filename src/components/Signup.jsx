@@ -21,6 +21,11 @@ const Signup = () => {
     setIsLClicked(false);
     setIsSClicked(true);
     setIsOutSClicked(true)
+    const token = JSON.parse(localStorage.getItem('userToken'))
+    if(token) {
+      navigate('/profile')
+      toast("Logout First")
+    }
   }, []);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

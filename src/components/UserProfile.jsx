@@ -13,7 +13,7 @@ const UserProfile = ({ props }) => {
   useEffect(() => {
     setIsLClicked(true);
     setIsSClicked(true);
-    setIsOutSClicked(false)
+    setIsOutSClicked(false);
     const token = JSON.parse(localStorage.getItem("userToken"));
     axios
       .get("http://localhost:5000/user/profile", {

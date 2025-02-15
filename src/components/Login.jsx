@@ -4,7 +4,7 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import { Button, Fab } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../hooks/ContextApi";
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 const Login = () => {
   const navigate = useNavigate();
@@ -17,6 +17,12 @@ const Login = () => {
   useEffect(() => {
     setIsLClicked(true);
     setIsSClicked(false);
+    const token = JSON.parse(localStorage.getItem("userToken"));
+    if (token) {
+      navigate("/profile");
+    } else {
+      navigate("/login");
+    }
   }, []);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,10 +43,11 @@ const Login = () => {
 
       if (response.ok) {
         localStorage.setItem("userToken", JSON.stringify(data.token));
-        toast("User Logged In Successfuuly")
+        toast("User Logged In Successfuuly");
         navigate("/profile");
       } else {
-        console.log(`Error: ${data.message}`);
+        toast(data.message)
+        // console.log(`Error: ${data.message}`);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -95,7 +102,6 @@ const Login = () => {
           >
             Loign
           </Button>
-          
         </div>
       </form>
     </div>
